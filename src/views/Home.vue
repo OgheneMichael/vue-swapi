@@ -7,17 +7,38 @@
       </div>
       <router-link to="/ship" class="btn">View more</router-link>
     </section>
+    <section>
+      <SectionHeader title="Popular Planets" />
+      <swiper :options="swiperOption">
+        <swiper-slide v-for="(planet, index) in planets" :key="index">
+          <Planet :planet="planet" />
+        </swiper-slide>
+        <div class="swiper-pagination" slot="pagination"></div>
+      </swiper>
+    </section>
   </main>
 </template>
 
 <script>
 import Ship from "../components/Ship";
 import SectionHeader from "../components/SectionHeader";
+import Planet from "../components/Planet";
+import "swiper/dist/css/swiper.css";
+import { swiper, swiperSlide } from "vue-awesome-swiper";
 
 export default {
   data() {
     return {
-      starships: []
+      starships: [],
+      planets: [],
+      swiperOption: {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true
+        }
+      }
     };
   },
   created: function() {
@@ -26,15 +47,18 @@ export default {
   methods: {
     fetchData: async function() {
       try {
-        const res = await fetch(`https://swapi.co/api/starships`);
-        const starships = await res.json();
-        this.starships = starships.results.slice(0, 6);
+        const data = await Promise.all([
+          fetch("https://swapi.co/api/starships").then(res => res.json()),
+          fetch("https://swapi.co/api/planets").then(res => res.json())
+        ]);
+        this.starships = data[0].results.slice(0, 6);
+        this.planets = data[1].results.slice(0, 6);
       } catch (e) {
         throw e;
       }
     }
   },
-  components: { Ship, SectionHeader }
+  components: { Ship, SectionHeader, swiper, swiperSlide, Planet }
 };
 </script>
 

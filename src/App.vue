@@ -44,4 +44,20 @@ img {
   color: #0e0e0e;
   text-decoration: none;
 }
+
+.swiper-wrapper {
+  margin-bottom: 4rem;
+}
+
+.swiper-pagination-bullet {
+  width: 1rem !important;
+  height: 1rem !important;
+  background: none !important;
+  opacity: 1 !important;
+  border: 1px solid #0e0e0e;
+}
+
+.swiper-pagination-bullet-active {
+  background: #0e0e0e !important;
+}
 </style>
