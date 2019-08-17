@@ -16,11 +16,19 @@
         <div class="swiper-pagination" slot="pagination"></div>
       </swiper>
     </section>
+    <section>
+      <SectionHeader title="Popular Characters" />
+      <div class="grid grid--2">
+        <Person v-for="(person, index) in people" :key="index" :person="person" />
+      </div>
+      <router-link to="/ship" class="btn">View more</router-link>
+    </section>
   </main>
 </template>
 
 <script>
 import Ship from "../components/Ship";
+import Person from "../components/Person";
 import SectionHeader from "../components/SectionHeader";
 import Planet from "../components/Planet";
 import "swiper/dist/css/swiper.css";
@@ -31,6 +39,7 @@ export default {
     return {
       starships: [],
       planets: [],
+      people: [],
       swiperOption: {
         slidesPerView: 3,
         spaceBetween: 30,
@@ -49,35 +58,41 @@ export default {
       try {
         const data = await Promise.all([
           fetch("https://swapi.co/api/starships").then(res => res.json()),
-          fetch("https://swapi.co/api/planets").then(res => res.json())
+          fetch("https://swapi.co/api/planets").then(res => res.json()),
+          fetch("https://swapi.co/api/people").then(res => res.json())
         ]);
         this.starships = data[0].results.slice(0, 6);
         this.planets = data[1].results.slice(0, 6);
+        this.people = data[2].results.slice(0, 4);
       } catch (e) {
         throw e;
       }
     }
   },
-  components: { Ship, SectionHeader, swiper, swiperSlide, Planet }
+  components: { Ship, SectionHeader, swiper, swiperSlide, Planet, Person }
 };
 </script>
 
 <style scoped>
 section {
   position: relative;
-  padding: 5rem 0;
+  padding-bottom: 5rem;
   text-align: center;
 }
+
 .grid {
   display: grid;
   grid-gap: 2.5rem;
   grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 400px;
-  grid-auto-rows: minmax(100px, auto);
+}
+
+.grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: minmax(200px, auto);
 }
 
 .btn {
-  margin: 5rem auto;
+  margin: 5rem 0 auto;
   min-width: 40%;
   background: transparent;
   border: 1px solid currentColor;

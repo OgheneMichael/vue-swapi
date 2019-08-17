@@ -17,6 +17,7 @@ export default {
 h3 {
   position: relative;
   font-size: 2rem;
+  margin-bottom: 3rem;
 }
 
 h3::after {
