@@ -1,32 +1,36 @@
 <template>
-  <main class="container">
-    <section>
-      <SectionHeader title="Popular Starships" />
-      <div class="grid">
-        <Ship v-for="(ship, index) in starships" :key="index" :ship="ship" />
-      </div>
-      <router-link to="/ship" class="btn">View more</router-link>
-    </section>
-    <section>
-      <SectionHeader title="Popular Planets" />
-      <swiper :options="swiperOption">
-        <swiper-slide v-for="(planet, index) in planets" :key="index">
-          <Planet :planet="planet" />
-        </swiper-slide>
-        <div class="swiper-pagination" slot="pagination"></div>
-      </swiper>
-    </section>
-    <section>
-      <SectionHeader title="Popular Characters" />
-      <div class="grid grid--2">
-        <Person v-for="(person, index) in people" :key="index" :person="person" />
-      </div>
-      <router-link to="/ship" class="btn">View more</router-link>
-    </section>
-  </main>
+  <div>
+    <Hero />
+    <main class="container">
+      <section>
+        <SectionHeader title="Popular Starships" />
+        <div class="grid grid--3">
+          <Ship v-for="(ship, index) in starships" :key="index" :ship="ship" />
+        </div>
+        <router-link to="/ship" class="btn">View more</router-link>
+      </section>
+      <section>
+        <SectionHeader title="Popular Planets" />
+        <swiper :options="swiperOption">
+          <swiper-slide v-for="(planet, index) in planets" :key="index">
+            <Planet :planet="planet" />
+          </swiper-slide>
+          <div class="swiper-pagination" slot="pagination"></div>
+        </swiper>
+      </section>
+      <section>
+        <SectionHeader title="Popular Characters" />
+        <div class="grid grid--2">
+          <Person v-for="(person, index) in people" :key="index" :person="person" />
+        </div>
+        <router-link to="/ship" class="btn">View more</router-link>
+      </section>
+    </main>
+  </div>
 </template>
 
 <script>
+import Hero from "../components/Hero";
 import Ship from "../components/Ship";
 import Person from "../components/Person";
 import SectionHeader from "../components/SectionHeader";
@@ -69,28 +73,19 @@ export default {
       }
     }
   },
-  components: { Ship, SectionHeader, swiper, swiperSlide, Planet, Person }
+  components: {
+    Hero,
+    Ship,
+    SectionHeader,
+    swiper,
+    swiperSlide,
+    Planet,
+    Person
+  }
 };
 </script>
 
 <style scoped>
-section {
-  position: relative;
-  padding-bottom: 5rem;
-  text-align: center;
-}
-
-.grid {
-  display: grid;
-  grid-gap: 2.5rem;
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.grid--2 {
-  grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: minmax(200px, auto);
-}
-
 .btn {
   margin: 5rem 0 auto;
   min-width: 40%;
