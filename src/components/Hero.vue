@@ -107,4 +107,19 @@ nav a {
 .router-link-exact-active {
   color: bisque;
 }
+
+@media only screen and (max-width: 330px) {
+  .logo {
+    width: 100px;
+  }
+
+  .intro {
+    font-size: 30px;
+  }
+
+  nav a {
+    font-size: 14px;
+    padding: 2px 5px;
+  }
+}
 </style>

@@ -36,6 +36,8 @@ export default {
   position: absolute;
   overflow: hidden;
   z-index: -1;
+  height: 100%;
+  width: 100%;
 }
 
 .planet:hover img {
@@ -43,6 +45,7 @@ export default {
 }
 
 img {
+  position: absolute;
   object-fit: cover;
   object-position: center;
   height: 100%;

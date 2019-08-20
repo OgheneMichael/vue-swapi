@@ -9,11 +9,6 @@ export default {
 </script>
 
 <style>
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
 .btn {
   position: relative;
   display: inline-block;

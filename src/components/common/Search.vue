@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <input type="search" @input="onInput" placeholder="Enter a search term" />
   </div>
 </template>
@@ -16,6 +16,12 @@ export default {
 div {
   display: block;
   width: 50%;
+}
+
+@media only screen and (max-width: 600px) {
+  div {
+    width: 100%;
+  }
 }
 
 input {
