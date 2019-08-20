@@ -5,7 +5,14 @@
     </div>
     <div>
       <h3>{{ship.name}}</h3>
-      <p>{{ ship.manufacturer }}</p>
+      <p>
+        <strong>Model:</strong>
+        <span>{{ ship.model }}</span>
+      </p>
+      <p>
+        <strong>Capacity:</strong>
+        <span>{{ ship.cargo_capacity }}</span>
+      </p>
       <router-link :to="shipPath" class="btn">Read more</router-link>
     </div>
   </article>
