@@ -6,9 +6,10 @@
     <main class="container">
       <section>
         <SectionHeader title="Popular Characters" />
-        <div class="grid grid--2">
+        <div v-if="!isLoading" class="grid grid--2">
           <Person v-for="(person, index) in people" :key="index" :person="person" />
         </div>
+        <Loader v-else />
       </section>
       <Pager :prevPage="prevPage" :nextPage="nextPage" :onClick="handlePage" />
     </main>
@@ -21,10 +22,12 @@ import SectionHeader from "../components/SectionHeader";
 import Person from "../components/Person";
 import Search from "../components/common/Search";
 import Pager from "../components/common/Pager";
+import Loader from "../components/common/Loader";
 
 export default {
   data() {
     return {
+      isLoading: false,
       search_component: "search",
       people: [],
       prevPage: null,
@@ -38,6 +41,7 @@ export default {
     fetchData: async function(e) {
       let searchTerm = "";
       if (e !== undefined) searchTerm = e.target.value;
+      this.isLoading = !this.isLoading;
       try {
         const res = await fetch(
           `https://swapi.co/api/people/?search=${searchTerm}`
@@ -46,18 +50,23 @@ export default {
         this.people = people.results;
         this.prevPage = people.previous;
         this.nextPage = people.next;
+        this.isLoading = !this.isLoading;
       } catch (e) {
+        this.isLoading = !this.isLoading;
         throw e;
       }
     },
     handlePage: async function(endpoint) {
+      this.isLoading = !this.isLoading;
       try {
         const res = await fetch(endpoint);
         const people = await res.json();
         this.people = people.results;
         this.prevPage = people.previous;
         this.nextPage = people.next;
+        this.isLoading = !this.isLoading;
       } catch (e) {
+        this.isLoading = !this.isLoading;
         throw e;
       }
     }
@@ -67,7 +76,8 @@ export default {
     SectionHeader,
     Search,
     Person,
-    Pager
+    Pager,
+    Loader
   }
 };
 </script>

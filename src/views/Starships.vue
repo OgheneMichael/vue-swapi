@@ -6,9 +6,10 @@
     <main class="container">
       <section>
         <SectionHeader title="Popular Starships" />
-        <div class="grid grid--3">
+        <div v-if="!isLoading" class="grid grid--3">
           <Ship v-for="(ship, index) in starships" :key="index" :ship="ship" />
         </div>
+        <Loader v-else />
       </section>
       <Pager :prevPage="prevPage" :nextPage="nextPage" :onClick="handlePage" />
     </main>
@@ -21,9 +22,11 @@ import SectionHeader from "../components/SectionHeader";
 import Ship from "../components/Ship";
 import Search from "../components/common/Search";
 import Pager from "../components/common/Pager";
+import Loader from "../components/common/Loader";
 export default {
   data() {
     return {
+      isLoading: false,
       search_component: "search",
       starships: [],
       prevPage: null,
@@ -38,6 +41,7 @@ export default {
       let searchTerm = "";
       if (e !== undefined) searchTerm = e.target.value;
       try {
+        this.isLoading = !this.isLoading;
         const res = await fetch(
           `https://swapi.co/api/starships/?search=${searchTerm}`
         );
@@ -45,18 +49,23 @@ export default {
         this.starships = starships.results;
         this.prevPage = starships.previous;
         this.nextPage = starships.next;
+        this.isLoading = !this.isLoading;
       } catch (e) {
+        this.isLoading = !this.isLoading;
         throw e;
       }
     },
     handlePage: async function(endpoint) {
+      this.isLoading = !this.isLoading;
       try {
         const res = await fetch(endpoint);
         const starships = await res.json();
         this.starships = starships.results;
         this.prevPage = starships.previous;
         this.nextPage = starships.next;
+        this.isLoading = !this.isLoading;
       } catch (e) {
+        this.isLoading = !this.isLoading;
         throw e;
       }
     }
@@ -66,10 +75,15 @@ export default {
     SectionHeader,
     Search,
     Ship,
-    Pager
+    Pager,
+    Loader
   }
 };
 </script>
 
 <style  scoped>
+main {
+  position: relative;
+  min-height: 50vh;
+}
 </style>
