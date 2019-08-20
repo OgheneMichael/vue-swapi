@@ -69,3 +69,35 @@ a {
 .swiper-pagination-bullet-active {
 	background: #0e0e0e !important;
 }
+
+.figure-wrapper {
+	position: relative;
+	width: 400px;
+	height: 400px;
+	margin: 0 auto 2rem;
+	border-radius: 5px;
+	overflow: hidden;
+	box-shadow: 0 0 6px 0px #2c3e50;
+	transition: all 0.3s ease;
+}
+
+.figure-wrapper:hover img {
+	transform: scale(1.08) rotate(-2deg);
+}
+
+.figure-wrapper img {
+	height: 100%;
+	object-fit: cover;
+}
+
+.figure-wrapper figcaption {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 1rem 5px;
+	font-size: 25px;
+	opacity: 0.8;
+	color: #ffffff;
+	background: rgba(0, 0, 0, 0.6);
+}

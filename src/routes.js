@@ -4,9 +4,9 @@ import Home from "./views/Home";
 import Starships from "./views/Starships";
 import ShipDetail from "./views/ShipDetail";
 import Planets from "./views/Planets";
-import PlanetDetail from "./views/Planets";
+import PlanetDetail from "./views/PlanetDetail";
 import Characters from "./views/Characters";
-import CharacterDetail from "./views/Characters";
+import CharacterDetail from "./views/CharacterDetail";
 
 Vue.use(Router);
 

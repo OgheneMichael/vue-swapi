@@ -9,14 +9,19 @@
       <p>Skin Color: {{ person.skin_color }}</p>
       <p>Eye Color: {{ person.eye_color }}</p>
       <p>Birth Year: {{ person.birth_year }}</p>
-      <router-link to="/ship" class="btn">Read more</router-link>
+      <router-link :to="personPath" class="btn">Read more</router-link>
     </div>
   </article>
 </template>
 
 <script>
 export default {
-  props: ["person"]
+  props: ["person"],
+  computed: {
+    personPath: function() {
+      return `/characters/${this.person.url.replace(/[^0-9]/g, "")}`;
+    }
+  }
 };
 </script>
 
