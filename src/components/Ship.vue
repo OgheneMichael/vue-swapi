@@ -1,19 +1,24 @@
 <template>
   <article>
     <div class="image-wrapper">
-      <img src="../assets/starship-2.jpg" alt="photo" />
+      <img src="../assets/starship-1.jpg" alt="photo" />
     </div>
     <div>
       <h3>{{ship.name}}</h3>
       <p>{{ ship.manufacturer }}</p>
-      <router-link to="/ship" class="btn">Read more</router-link>
+      <router-link :to="shipPath" class="btn">Read more</router-link>
     </div>
   </article>
 </template>
 
 <script>
 export default {
-  props: ["ship"]
+  props: ["ship"],
+  computed: {
+    shipPath: function() {
+      return `/starships/${this.ship.url.replace(/[^0-9]/g, "")}`;
+    }
+  }
 };
 </script>
 
@@ -52,6 +57,7 @@ h3 {
 
 p {
   color: #c3c3c8;
+  padding: 5px 0;
 }
 
 .btn {
