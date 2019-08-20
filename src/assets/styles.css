@@ -1,0 +1,63 @@
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+		Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	color: #2c3e50;
+}
+
+section {
+	position: relative;
+	padding-bottom: 5rem;
+	text-align: center;
+}
+
+img {
+	display: block;
+	width: 100%;
+	transition: all 0.3s ease;
+}
+
+a {
+	text-decoration: none;
+	color: currentColor;
+}
+
+.grid {
+	display: grid;
+	grid-gap: 2.5rem;
+}
+
+.grid--2 {
+	grid-template-columns: repeat(2, 1fr);
+	grid-auto-rows: minmax(200px, auto);
+}
+
+.grid--3 {
+	grid-template-columns: repeat(3, 1fr);
+}
+
+/* override default styles for carousel plugin */
+.swiper-wrapper {
+	margin-bottom: 4rem;
+}
+
+.swiper-pagination-bullet {
+	width: 1rem !important;
+	height: 1rem !important;
+	background: none !important;
+	opacity: 1 !important;
+	border: 1px solid #0e0e0e;
+}
+
+.swiper-pagination-bullet-active {
+	background: #0e0e0e !important;
+}
