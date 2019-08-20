@@ -7,7 +7,7 @@
         <div class="grid grid--3">
           <Ship v-for="(ship, index) in starships" :key="index" :ship="ship" />
         </div>
-        <router-link to="/ship" class="btn">View more</router-link>
+        <router-link to="/starships" class="btn">View more</router-link>
       </section>
       <section>
         <SectionHeader title="Popular Planets" />
@@ -23,7 +23,7 @@
         <div class="grid grid--2">
           <Person v-for="(person, index) in people" :key="index" :person="person" />
         </div>
-        <router-link to="/ship" class="btn">View more</router-link>
+        <router-link to="/characters" class="btn">View more</router-link>
       </section>
     </main>
   </div>

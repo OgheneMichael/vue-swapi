@@ -3,7 +3,7 @@
     <Hero />
     <main class="container">
       <section>
-        <figure class="image-wrapper">
+        <figure class="figure-wrapper">
           <img src="../assets/starship-1.jpg" alt="photo" />
           <figcaption>{{ship.name}}</figcaption>
         </figure>
@@ -66,26 +66,11 @@ export default {
 </script>
 
 <style scoped>
-figure {
-  position: relative;
-  width: 400px;
-  margin: 0 auto;
-  border-radius: 5px;
-  overflow: hidden;
-  box-shadow: 0 0 6px 0px #2c3e50;
-  transform: translateY(-40%);
-  transition: all 0.3s ease;
+section {
+  transform: translateY(-20%);
 }
-
-figcaption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 1rem 5px;
-  font-size: 25px;
-  opacity: 0.8;
-  color: #ffffff;
+figure {
+  box-shadow: 0 0 6px 0px #2c3e50;
 }
 
 span {
