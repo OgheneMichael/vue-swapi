@@ -1,5 +1,5 @@
 <template>
-  <router-link to="/" class="planet">
+  <router-link :to="planetPath" class="planet">
     <div class="image-wrapper">
       <img src="../assets/planet-1.jpg" alt="photo" />
     </div>
@@ -11,7 +11,12 @@
 
 <script>
 export default {
-  props: ["planet"]
+  props: ["planet"],
+  computed: {
+    planetPath: function() {
+      return `/planets/${this.planet.url.replace(/[^0-9]/g, "")}`;
+    }
+  }
 };
 </script>
 
