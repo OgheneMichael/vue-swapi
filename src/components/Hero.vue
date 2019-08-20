@@ -103,4 +103,8 @@ nav a {
   border-radius: 2px;
   font-weight: 500;
 }
+
+.router-link-exact-active {
+  color: bisque;
+}
 </style>
