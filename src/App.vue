@@ -1,8 +1,7 @@
 <template>
-  <div id="app">
-    <h1>SWAPI</h1>
-    <router-view />
-  </div>
+  <!-- <div id="app"> -->
+  <router-view />
+  <!-- </div> -->
 </template>
 
 <script>
@@ -12,23 +11,9 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
 .container {
   max-width: 1100px;
   margin: 0 auto;
-}
-
-img {
-  display: block;
-  width: 100%;
-  transition: all 0.3s ease;
 }
 
 .btn {
@@ -43,21 +28,5 @@ img {
   transition: 0.2s ease;
   color: #0e0e0e;
   text-decoration: none;
-}
-
-.swiper-wrapper {
-  margin-bottom: 4rem;
-}
-
-.swiper-pagination-bullet {
-  width: 1rem !important;
-  height: 1rem !important;
-  background: none !important;
-  opacity: 1 !important;
-  border: 1px solid #0e0e0e;
-}
-
-.swiper-pagination-bullet-active {
-  background: #0e0e0e !important;
 }
 </style>

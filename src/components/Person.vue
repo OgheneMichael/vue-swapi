@@ -1,7 +1,7 @@
 <template>
   <article>
     <div class="image-wrapper">
-      <img src="../assets/starship-2.jpg" alt="photo" />
+      <img src="../assets/character-3.jpg" alt="photo" />
     </div>
     <div>
       <h3>{{person.name}}</h3>
@@ -42,6 +42,7 @@ article:hover img {
 
 img {
   height: 100%;
+  object-fit: cover;
 }
 
 div:not(.image-wrapper) {

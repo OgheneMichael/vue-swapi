@@ -2,8 +2,8 @@ import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home";
 import Starships from "./views/Starships";
-import Planets from "./views/Home";
-import Characters from "./views/Home";
+import Planets from "./views/Planets";
+import Characters from "./views/Characters";
 
 Vue.use(Router);
 
